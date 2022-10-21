@@ -12,9 +12,9 @@ export const findAll = async (req, res) => {
 
 export const findOne = async (req, res) => {
     try {
-        const id = Number(req.params);
-        const category = await prisma.category.findunique({
-            where: {id},
+        const id = Number(req.params.id);
+        const category = await prisma.category.findUnique({
+            where: {id: id},
         });
         return success({ res, data: category});
     }catch(error){
@@ -37,7 +37,7 @@ export const create = async (req, res) => {
 
 export const update = async (req, res) => {
     try {
-        const id = Number(req.params)
+        const id = Number(req.params.id)
         const category = await prisma.category.update({
             where: {id},
             data: req.body
@@ -50,7 +50,7 @@ export const update = async (req, res) => {
 
 export const  remove = async (req, res) => {
     try{
-        const id = Number(req.params);
+        const id = Number(req.params.id);
         const category = await prisma.category.delete({where: {id}})
         return success({ res, data: category});
     }catch(error){
