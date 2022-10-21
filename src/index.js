@@ -1,12 +1,14 @@
 import express from 'express';
 import cors from 'cors';
-import { categoryRouter } from './components';
+import { CategoryRouter } from './components';
+import { ProductRouter } from './components';
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/category", categoryRouter)
+app.use("/category", CategoryRouter)
+app.use("/product", ProductRouter)
 //al poner cero espcificamos que use un puerto libre en la computadora
 //solo se usa para desarrollo
 
